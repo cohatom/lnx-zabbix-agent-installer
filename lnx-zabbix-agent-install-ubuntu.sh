@@ -1,7 +1,7 @@
 #!/bin/bash
-#Alarix skripta za namestitev Zabbix Agenta na Ubuntu 18.04
+#skripta za namestitev Zabbix Agenta na Ubuntu 20.04
 #Verzija: 0.5
-#Izdelano: 05/2019
+#Izdelano: 12/2020
 
 #Shortcuts are curtesy of: https://stackoverflow.com/a/16844327
 #Text formatting shortcuts
@@ -48,7 +48,7 @@ apt update
 
 #install zabbix agent paket
 echo ${WhiteOnRedbg}Installing package zabbix-agent${RCol}
-apt -y install zabbix-agent
+apt -y install zabbix-agent2
 
 #nastavi zabbix agent da se zazene ob rebootu
 echo ${WhiteOnRedbg}Setting Zabbix agent run at startup...${RCol}
@@ -64,19 +64,19 @@ service zabbix-agent stop
 
 #premaknemo originalen zabbix_proxy.conf file
 echo "Moving original zabbix_agent.conf to /etc/zabbix/zabbix_agent.conf.example just in case..."
-mv /etc/zabbix/zabbix_agent.conf /etc/zabbix/zabbix_agent.conf.example
+mv /etc/zabbix/zabbix_agent2.conf /etc/zabbix/zabbix_agent2.conf.example
 
 #kreira nov zabbix_proxy.conf file z nasimi nastavitvami
 echo ${WhiteOnRedbg}Creating new Zabbix Agent config file...${RCol}
-cat > /etc/zabbix/zabbix_agent.conf << EOF
+cat > /etc/zabbix/zabbix_agent2.conf << EOF
 Server=$proxyAddress
 ServerActive=$proxyAddress
 Hostname=$proxyHostname
-LogFile=/var/log/zabbix/zabbix_proxy.log
+LogFile=/var/log/zabbix/zabbix_agent2.log
 LogFileSize=50
 EnableRemoteCommands=1
 LogRemoteCommands=1
-PidFile=/var/run/zabbix/zabbix_proxy.pid
+PidFile=/var/run/zabbix/zabbix_agent2.pid
 Include=/etc/zabbix/zabbix_agentd.d/*.conf
 EOF
 
