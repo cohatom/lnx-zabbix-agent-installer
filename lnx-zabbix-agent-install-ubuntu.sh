@@ -34,24 +34,24 @@ else
 fi
 
 #downloada .deb in shrani filename v $downloadFilename
-echo $(tput setaf 2)Downloading sources...${RCol}
+echo $(tput setaf 2)Downloading sources...$(tput sgr0)
 downloadFilename=$(wget -nv $downloadFileUrl 2>&1 | cut -d\" -f2)
 
 echo $downloadFilename
 
 #namestimo .deb file
-echo $(tput setaf 2)Installing sources...${RCol}
+echo $(tput setaf 2)Installing sources...$(tput sgr0)
 dpkg -i $downloadFilename
 
 #update apt cache
 apt update
 
 #install zabbix agent paket
-echo $(tput setaf 2)Installing package zabbix-agent${RCol}
+echo $(tput setaf 2)Installing package zabbix-agent$(tput sgr0)
 apt -y install zabbix-agent2
 
 #nastavi zabbix agent da se zazene ob rebootu
-echo $(tput setaf 2)Setting Zabbix agent run at startup...${RCol}
+echo $(tput setaf 2)Setting Zabbix agent run at startup...$(tput sgr0)
 systemctl start zabbix-agent2.service
 systemctl enable zabbix-agent2.service
 
@@ -59,7 +59,7 @@ systemctl enable zabbix-agent2.service
 proxyHostname=$(hostname)
 
 #ustavi agenta preden urejamo .conf file
-echo $(tput setaf 2)Stopping Zabbix Agent to configure...${RCol}
+echo $(tput setaf 2)Stopping Zabbix Agent to configure...$(tput sgr0)
 service zabbix-agent2 stop
 
 #premaknemo originalen zabbix_proxy.conf file
@@ -67,7 +67,7 @@ echo "Moving original zabbix_agent.conf to /etc/zabbix/zabbix_agent.conf.example
 mv /etc/zabbix/zabbix_agent2.conf /etc/zabbix/zabbix_agent2.conf.example
 
 #kreira nov zabbix_proxy.conf file z nasimi nastavitvami
-echo $(tput setaf 2)Creating new Zabbix Agent config file...${RCol}
+echo $(tput setaf 2)Creating new Zabbix Agent config file...$(tput sgr0)
 cat > /etc/zabbix/zabbix_agent2.conf << EOF
 Server=$proxyAddress
 ServerActive=$proxyAddress
@@ -81,5 +81,5 @@ Include=/etc/zabbix/zabbix_agentd.d/*.conf
 EOF
 
 #zazene proxy nazaj
-echo $(tput setaf 2)Starting Zabbix Agent service...${RCol}
+echo $(tput setaf 2)Starting Zabbix Agent service...$(tput sgr0)
 service zabbix-agent2 start
