@@ -82,4 +82,4 @@ EOF
 
 #zazene proxy nazaj
 echo ${WhiteOnRedbg}Starting Zabbix Agent...${RCol}
-service zabbix-agent start2
+service zabbix-agent2 start
