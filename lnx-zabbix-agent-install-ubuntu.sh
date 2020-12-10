@@ -52,15 +52,15 @@ apt -y install zabbix-agent2
 
 #nastavi zabbix agent da se zazene ob rebootu
 echo ${WhiteOnRedbg}Setting Zabbix agent run at startup...${RCol}
-systemctl start zabbix-agent.service
-systemctl enable zabbix-agent.service
+systemctl start zabbix-agent2.service
+systemctl enable zabbix-agent2.service
 
 #pridobi hostname serverja za vpis v config file
 proxyHostname=$(hostname)
 
 #ustavi agenta preden urejamo .conf file
 echo ${WhiteOnRedbg}Stopping Zabbix Agent to configure...${RCol}
-service zabbix-agent stop
+service zabbix-agent2 stop
 
 #premaknemo originalen zabbix_proxy.conf file
 echo "Moving original zabbix_agent.conf to /etc/zabbix/zabbix_agent.conf.example just in case..."
@@ -82,4 +82,4 @@ EOF
 
 #zazene proxy nazaj
 echo ${WhiteOnRedbg}Starting Zabbix Agent...${RCol}
-service zabbix-agent start
+service zabbix-agent start2
