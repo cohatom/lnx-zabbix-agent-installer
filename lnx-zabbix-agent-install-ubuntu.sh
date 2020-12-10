@@ -24,7 +24,7 @@ proxyAddress=""
 downloadFileUrl="https://repo.zabbix.com/zabbix/5.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_5.2-1+ubuntu$(lsb_release -rs)_all.deb"
 echo "Vnesi IP naslov lokalnega Zabbix Proxy strežnika in pritistni [ENTER]:"
 read proxyAddress
-ping -W 1 -c 2 $proxyAddress > /dev/null 2>&1 &
+ping -c 1 -W 1 $proxyAddress > /dev/null 2>&1 &
 if [ $? -eq 0 ]
 then
         echo $(tput setaf 2)Ping uspesen. Nadaljujem...$(tput sgr0)
