@@ -1,12 +1,12 @@
 # lnx-zabbix-agent-installer
-Automatic Linux Zabbix Agent installer
+Automatic Linux Zabbix Agent installer for *Ubuntu 20.04*
 
-How to install
+# How to install
+You need to use your username and password as repository is private for the time beign. 
 
+1. git clone https://username:"password"@github.com/cohatom/lnx-zabbix-agent-installer.git
+2. chmod +x lnx-zabbix-agent-installer.sh
+3. ./lnx-zabbix-agent-installer.sh
+4. At the prompt enter the IP address of local Zabbix proxy server.
 
-chmod +x lnx-zabbix-agent-installer.sh
-./lnx-zabbix-agent-installer.sh
-
-At the prompt enter the IP address of local Zabbix proxy server.
-IMPORTANT
-If proxy server does not answer to ping requests installer will fail.
+*IMPORTANT:* If you enter invalid or unreachable IP address at the prompt script will fail!
