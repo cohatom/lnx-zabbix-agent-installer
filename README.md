@@ -9,4 +9,4 @@ You need to use your username and password as repository is private for the time
 3. ./lnx-zabbix-agent-installer.sh
 4. At the prompt enter the IP address of local Zabbix proxy server.
 
-*IMPORTANT:* If you enter invalid or unreachable IP address at the prompt script will fail!
+**IMPORTANT:** If you enter invalid or unreachable IP address at the prompt script will fail!
