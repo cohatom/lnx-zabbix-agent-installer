@@ -59,21 +59,21 @@ ServerActive=$proxyAddress
 Hostname=$proxyHostname
 LogFile=/var/log/zabbix/zabbix_agent2.log
 LogFileSize=50
-EnableRemoteCommands=1
-LogRemoteCommands=1
 PidFile=/var/run/zabbix/zabbix_agent2.pid
-Include=/etc/zabbix/zabbix_agentd.d/*.conf
 EOF
 
 #zazene agenta
 echo $(tput setaf 2)Starting Zabbix Agent service...$(tput sgr0)
 service zabbix-agent2 start > /dev/null
 
+#wait for service to start to avoid false positive if service stops
+sleep 2
+
 systemctl is-active --quiet zabbix-agent2
 if [ $? = 0 ]
 then
-        echo $(tput setaf 2)Zabbix Agent service is RUNNING$(tput sgr0)
+        echo $(tput setaf 2)"Zabbix Agent service is RUNNING"$(tput sgr0)
 else
-        echo "$(tput setaf 1)Oh no... Zabbix Agent service is NOT running. Exiting script!"$(tput sgr0)
+        echo $(tput setaf 1)"Oh no... Zabbix Agent service is NOT running. Exiting script!"$(tput sgr0)
         exit 0
 fi
