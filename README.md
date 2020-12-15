@@ -1,6 +1,6 @@
 # lnx-zabbix-agent-installer
 
-Automatic Linux Zabbix Agent installer for **Ubuntu 20.04**
+Automatic Zabbix Agent installer for **Ubuntu 20.04**
 
 ## How to install
 
